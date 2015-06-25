@@ -15,7 +15,7 @@ public class MainActivity extends FragmentActivity {
 	ViewPager Tab;
     TabPagerAdapter TabAdapter;
 	ActionBar actionBar;
-
+	ActionBar.TabListener tabListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,36 +43,46 @@ public class MainActivity extends FragmentActivity {
         
         //Enable Tabs on Action Bar
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        ActionBar.TabListener tabListener = new ActionBar.TabListener(){
-
+        tabListener = new ActionBar.TabListener(){
 			@Override
 			public void onTabReselected(android.app.ActionBar.Tab tab,
 					FragmentTransaction ft) {
 				// TODO Auto-generated method stub
 				Toast.makeText(getApplicationContext(), "Tab selected", 2000).show();
-				
 			}
 
 			@Override
 			 public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-	          
 	            Tab.setCurrentItem(tab.getPosition());
+
 	        }
 
 			@Override
 			public void onTabUnselected(android.app.ActionBar.Tab tab,
 					FragmentTransaction ft) {
 				// TODO Auto-generated method stub
-				
-			}};
-			//Add New Tabs
-			actionBar.addTab(actionBar.newTab().setText("Movie").setTabListener(tabListener));
-			actionBar.addTab(actionBar.newTab().setText("Music").setTabListener(tabListener));
-			actionBar.addTab(actionBar.newTab().setText("Video").setTabListener(tabListener));
-			actionBar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
-			actionBar.setDisplayShowHomeEnabled(false);
-			actionBar.setDisplayShowTitleEnabled(false);
+			}
+		};
+
+
+
+
+
+		// add tab
+		actionBar.addTab(getTab(R.drawable.home));
+		actionBar.addTab(getTab(R.drawable.app));
+		actionBar.addTab(getTab(R.drawable.search));
+		actionBar.addTab(getTab(R.drawable.reminder));
+		actionBar.addTab(getTab(R.drawable.human));
+		// remove actionbar
+		actionBar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
+		actionBar.setDisplayShowHomeEnabled(false);
+		actionBar.setDisplayShowTitleEnabled(false);
     }
+
+	private ActionBar.Tab getTab(int drawable){
+		return actionBar.newTab().setTabListener(tabListener).setIcon(drawable);
+	}
 
 
 
