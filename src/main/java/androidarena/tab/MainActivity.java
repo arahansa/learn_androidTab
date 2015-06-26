@@ -23,25 +23,19 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         
         TabAdapter = new TabPagerAdapter(getSupportFragmentManager());
-        
-        
         Tab = (ViewPager)findViewById(R.id.pager);
-        
-        Tab.setOnPageChangeListener(
-                new ViewPager.SimpleOnPageChangeListener() {
-                    @Override
-                    public void onPageSelected(int position) {
-                       
-                    	actionBar = getActionBar();
-                    	actionBar.setSelectedNavigationItem(position);                    }
-                });
-        
-        Tab.setAdapter(TabAdapter);
+		Tab.setOnPageChangeListener(
+				new ViewPager.SimpleOnPageChangeListener() {
+					@Override
+					public void onPageSelected(int position) {
+						actionBar = getActionBar();
+						actionBar.setSelectedNavigationItem(position);
+					}
+				});
+		Tab.setAdapter(TabAdapter);
         
         actionBar = getActionBar();
-
-        
-        //Enable Tabs on Action Bar
+		//Enable Tabs on Action Bar
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         tabListener = new ActionBar.TabListener(){
 			@Override
@@ -54,7 +48,6 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			 public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
 	            Tab.setCurrentItem(tab.getPosition());
-
 	        }
 
 			@Override
@@ -63,10 +56,6 @@ public class MainActivity extends FragmentActivity {
 				// TODO Auto-generated method stub
 			}
 		};
-
-
-
-
 
 		// add tab
 		actionBar.addTab(getTab(R.drawable.home));

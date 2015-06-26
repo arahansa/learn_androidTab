@@ -13,15 +13,11 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
 	@Override
 	public Fragment getItem(int i) {
 		switch (i) {
-        case 0:
-            //Fragement for Movie Tab
-            return new Movies();
-        case 1:
-           //Fragment for Music Tab
-            return new Music();
-        case 2:
-            //Fragment for video Tab
-            return new Video();
+			case 0: return new Movies();
+			case 1: return new Music();
+			case 2: return new Video();
+			case 3:	return new Reminder();
+			case 4: return new Human();
         }
 		return null;
 		
@@ -30,7 +26,7 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 3; //No of Tabs
+		return 5; //No of Tabs
 	}
 
 
