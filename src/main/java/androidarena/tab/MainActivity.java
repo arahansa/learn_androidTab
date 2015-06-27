@@ -57,16 +57,21 @@ public class MainActivity extends FragmentActivity {
 			}
 		};
 
-		// add tab
-		actionBar.addTab(getTab(R.drawable.home));
-		actionBar.addTab(getTab(R.drawable.app));
-		actionBar.addTab(getTab(R.drawable.search));
-		actionBar.addTab(getTab(R.drawable.reminder));
-		actionBar.addTab(getTab(R.drawable.human));
 		// remove actionbar
 		actionBar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
 		actionBar.setDisplayShowHomeEnabled(false);
 		actionBar.setDisplayShowTitleEnabled(false);
+
+		ActionBar.Tab tabHome = getTab(R.drawable.home);
+		tabHome.getIcon().setAlpha(125);
+		tabHome.set
+
+		// add tab
+		actionBar.addTab(tabHome);
+		actionBar.addTab(getTab(R.drawable.app));
+		actionBar.addTab(getTab(R.drawable.search));
+		actionBar.addTab(getTab(R.drawable.reminder));
+		actionBar.addTab(getTab(R.drawable.human));
     }
 
 	private ActionBar.Tab getTab(int drawable){
